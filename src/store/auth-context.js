@@ -40,6 +40,7 @@ const retrieveStoredToken = () => {
 export const AuthContextProvider = (props) => {
   const tokenData = retrieveStoredToken();
   let initialToken;
+  
   if (tokenData) {
     initialToken = tokenData.token;
   }
@@ -74,7 +75,7 @@ export const AuthContextProvider = (props) => {
   }, [tokenData, logoutHandler]);
 
   const contextValue = {
-    apiToken: "AIzaSyC-B25x2I3xlHpW7FmM7OVmOt7sSbL5Mhg",
+    apiToken: process.env.REACT_APP_API_KEY,
     token,
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
